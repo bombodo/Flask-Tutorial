@@ -1,0 +1,43 @@
+name: flask
+channels:
+- conda-forge
+- defaults
+dependencies:
+- babel=2.3.4=py34_0
+- blinker=1.4=py34_0
+- coverage=4.3.1=py34_0
+- decorator=4.0.10=py34_0
+- defusedxml=0.4.1=py34_0
+- flask-babel=0.11.1=py34_0
+- flask-login=0.3.2=py34_0
+- flask-mail=0.9.1=py34_0
+- flask-openid=1.2.5=py34_0
+- flask-sqlalchemy=2.3.0=py_0
+- pbr=1.10.0=py34_0
+- python3-openid=3.0.10=py34_0
+- pytz=2016.10=py34_0
+- six=1.10.0=py34_1
+- sqlalchemy=1.1.4=py34_0
+- sqlalchemy-migrate=0.11.0=py_0
+- sqlparse=0.2.2=py34_0
+- tempita=0.5.3dev=py34_0
+- ca-certificates=2017.08.26=h1d4fec5_0
+- click=6.7=py34_0
+- flask=0.12=py34_0
+- itsdangerous=0.24=py34_0
+- jinja2=2.9.6=py34_0
+- libgcc-ng=7.2.0=hcbc56d2_1
+- markupsafe=1.0=py34_0
+- openssl=1.0.2l=h9d1a558_3
+- pip=9.0.1=py34_1
+- python=3.4.5=0
+- readline=6.2=2
+- setuptools=27.2.0=py34_0
+- sqlite=3.13.0=0
+- tk=8.5.18=0
+- werkzeug=0.11.15=py34_0
+- wheel=0.29.0=py34_0
+- xz=5.2.3=h2bcbf08_1
+- zlib=1.2.11=hfbfcf68_1
+prefix: /home/danny/anaconda3/envs/flask
+

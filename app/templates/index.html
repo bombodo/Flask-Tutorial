@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content1 %}
+    <h1>A Jinja2 block has been imported for {{ memer.nickname }}</h1>
+    {% for post in posts %}
+    <div>
+        <p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p>
+    </div>
+    {% endfor %}
+{% endblock %}
