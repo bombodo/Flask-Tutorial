@@ -9,7 +9,9 @@
         {% endif %}
     </head>
     <body>
+        {% if memer %}
         <h1>Some more memes for {{memer.nickname}}!</h1>
-        {% block content1 %}{% endblock %}
+        {% endif %}
+        {% block content %}{% endblock %}
     </body>
 </html>

@@ -24,6 +24,7 @@ dependencies:
 - ca-certificates=2017.08.26=h1d4fec5_0
 - click=6.7=py34_0
 - flask=0.12=py34_0
+- flask-wtf=0.12=py34_0
 - itsdangerous=0.24=py34_0
 - jinja2=2.9.6=py34_0
 - libgcc-ng=7.2.0=hcbc56d2_1
@@ -37,7 +38,12 @@ dependencies:
 - tk=8.5.18=0
 - werkzeug=0.11.15=py34_0
 - wheel=0.29.0=py34_0
+- wtforms=2.1=py34_0
 - xz=5.2.3=h2bcbf08_1
 - zlib=1.2.11=hfbfcf68_1
+- pip:
+  - flask-oauth==0.12
+  - httplib2==0.10.3
+  - oauth2==1.9.0.post1
 prefix: /home/danny/anaconda3/envs/flask
 
