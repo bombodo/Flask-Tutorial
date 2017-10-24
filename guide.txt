@@ -1,0 +1,11 @@
+EXPORT FLASK_APP=app/views.py
+
+# DB INITIALiZATION
+flask db init
+# DB MIGRATION
+# NOTES: alembic unable to detect:
+#		-table name change
+#		-column name change
+#		-named constraints?
+flask db migrate
+flask db upgrade

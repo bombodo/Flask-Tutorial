@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-#conda execute
-#env:
+# conda execute
+# env:
 # flask
 
 from app import app

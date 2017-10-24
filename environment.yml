@@ -42,8 +42,20 @@ dependencies:
 - xz=5.2.3=h2bcbf08_1
 - zlib=1.2.11=hfbfcf68_1
 - pip:
+  - alembic==0.9.5
+  - certifi==2017.7.27.1
+  - chardet==3.0.4
   - flask-oauth==0.12
+  - flask-oauthlib==0.9.4
   - httplib2==0.10.3
+  - idna==2.6
+  - mako==1.0.7
   - oauth2==1.9.0.post1
+  - oauthlib==2.0.4
+  - python-dateutil==2.6.1
+  - python-editor==1.0.3
+  - requests==2.18.4
+  - requests-oauthlib==0.8.0
+  - urllib3==1.22
 prefix: /home/danny/anaconda3/envs/flask
 

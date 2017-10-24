@@ -7,12 +7,12 @@
         <p>
             Please enter your OpenID:<br>
             {{ form.openid(size=80) }}<br>
-            {{% for error in form.openid.errors %}}
-                <!-- TODO: Use CSS styling for errors -->
+            <!-- {{% for error in form.openid.errors %}}
+                TODO: Use CSS styling for errors
                 <span style="colors: red;">
                     []{{ error }}]
                 </span>
-            {{% endfor %}}<br>
+            {{% endfor %}}<br> -->
         </p>
         <p>{{ form.remember_me }} Remember me</p>
         <p><input type="submit" value="Sign In"></p>

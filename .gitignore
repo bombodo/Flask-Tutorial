@@ -1,2 +1,8 @@
 flask/
+migrations/
+__pycache__/
+alembic/
+app/__mycache__/
 app/mysecrets.py
+app.db
+os.path
