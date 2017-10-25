@@ -40,6 +40,7 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    user = {'nickname': 'xD1337haxor'}
     form = LoginForm()
     if form.validate_on_submit():
         # for debugging
@@ -48,4 +49,5 @@ def login():
         return redirect('/index')
     return render_template('login.html',
                            title='Sign In',
+                           memer=user,
                            form=form)
