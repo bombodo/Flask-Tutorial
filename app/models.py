@@ -1,4 +1,5 @@
 from app import db
+from passlib.hash import pbkdf2_sha256
 # db from SQLAlchemy(app)
 
 
@@ -15,12 +16,31 @@ class User(BaseDB):
     # id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), index=True, nullable=False, unique=True)
     name = db.Column(db.String(64), index=True, unique=True)
-    password = db.Column(db.String(190), nullable=False)
+    password = db.Column(db.String(150), nullable=False)   # hash with PBKDF2
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     oauth_client = db.relationship('Client', backref='user', lazy='dynamic')
     token = db.relationship('Token', backref='user', lazy='dynamic')
     # post.author refers 'BACK' to this table
     # client.user, etc etc
+
+    def check_password(self, password):
+        pwhash = pbkdf2_sha256.hash("password")
+        return pwhash == self.password
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
 
     def __repr__(self):
         return '<User %r>' % (self.name)
