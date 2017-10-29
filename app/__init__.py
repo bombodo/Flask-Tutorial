@@ -10,6 +10,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 lm = LoginManager()
 lm.init_app(app)
+lm.login_view = 'login'
 oauth = OAuth2Provider(app)
 
 from app import views, models

@@ -9,9 +9,15 @@
         {% endif %}
     </head>
     <body>
+        <div>Microblog:
+            <a href="{{ url_for('index') }}">Home</a>
+            {% if g.user.is_authenticated %}
+            | <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+        </div>
         <hr>
         {% if memer %}
-        <h1>Some more memes for {{memer.nickname}}!</h1>
+        <h1>Some more memes for {{g.user}}!</h1>
         {% endif %}
 
         {% with messages = get_flashed_messages() %}
