@@ -111,13 +111,13 @@ def login():
     if form.validate_on_submit():
         # for debugging
         flash('Login requested for User="%s", remember_me="%s"' %
-              (form.openid, str(form.remember_me.data)))
-        user = User.query.filter_by(email=form.openid.data).first()
-        if user is None:
+              (form.username, str(form.remember_me.data)))
+        user = User.query.filter_by(email=form.username.data).first()
+        if user is None or not user.check_password(form.password):
             flash('Username or Password is invalid', 'error')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
-        session['remember_me'] = form.remember_me.data
+        # session['remember_me'] = form.remember_me.data
         return redirect(url_for('index'))
     return render_template('login.html',
                            title='Sign In',

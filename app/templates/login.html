@@ -5,14 +5,15 @@
     <form action="" method="post" name="login">
         {{ form.hidden_tag() }}
         <p>
-            Please enter your OpenID:<br>
-            {{ form.openid(size=80) }}<br>
-            {% for error in form.openid.errors %}
-                TODO: Use CSS styling for errors
+            Username/Email: {{ form.username(size=60) }}<br>
+            Password: {{ form.password(size=60) }}<br>
+            {% for error in form.username.errors %}
+                {# TODO: Use CSS styling for errors #}
                 <span style="colors: red;">
                     [{{ error }}]
                 </span>
             {% endfor %}<br>
+            Possibly insert oauth interface here
         </p>
         <p>{{ form.remember_me }} Remember me</p>
         <p><input type="submit" value="Sign In"></p>
