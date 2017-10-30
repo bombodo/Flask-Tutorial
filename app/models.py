@@ -24,8 +24,11 @@ class User(BaseDB):
     # post.author refers 'BACK' to this table
     # client.user, etc etc
 
+    def hashpass(password):
+        return pbkdf2_sha256.hash(password)
+
     def check_password(self, password):
-        pwhash = pbkdf2_sha256.hash("password")
+        pwhash = pbkdf2_sha256.hash(password)
         return pwhash == self.password
 
     @property

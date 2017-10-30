@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+<!-- Input(s): Registration Form -->
+{% block content %}
+    <h1>Register for my Service</h1>
+    <form action="" method="post" name="login">
+        {{ form.hidden_tag() }}
+        <p>
+            Desired User: {{ form.username(size=60) }}<br>
+            Email: {{ form.email }}<br>
+            Password: {{ form.password }}<br>
+            Confirm Password: {{ form.confirm}}<br>
+        </p>
+        <p>
+        {% for error in form.username.errors %}
+            {# TODO: Use CSS styling for errors #}
+            <span style="colors: red;">
+                [{{ error }}]
+            </span>
+        {% endfor %}
+        </p>
+        <p><input type="submit" name="Submit"></p>
+    </form>
+{% endblock %}

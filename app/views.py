@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, session, url_for, request, g
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, oauth
 from datetime import datetime  # , timedelta
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 from .models import User, Client, Token
 from flask_oauthlib.contrib.oauth2 import bind_sqlalchemy
 from flask_oauthlib.contrib.oauth2 import bind_cache_grant
@@ -101,8 +101,7 @@ def index():
 #     return tok
 
 
-
-@app.route('/login', methods=['GET','POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     user = {'nickname': 'xD1337haxor'}
     if g.user is not None and g.user.is_authenticated:
@@ -112,8 +111,8 @@ def login():
         # for debugging
         flash('Login requested for User="%s", remember_me="%s"' %
               (form.username, str(form.remember_me.data)))
-        user = User.query.filter_by(email=form.username.data).first()
-        if user is None or not user.check_password(form.password):
+        user = User.query.filter_by(name=form.username.data).first()
+        if user is None or not user.check_password(form.password.data):
             flash('Username or Password is invalid', 'error')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
@@ -122,6 +121,36 @@ def login():
     return render_template('login.html',
                            title='Sign In',
                            memer=user,
+                           form=form)
+
+
+@app.route('/register', methods=['Get', 'Post'])
+def register():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        flash('Registration requested for Email="%s"' %
+              form.username)
+        email = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(name=form.username.data).first()
+        passcheck = User.hashpass(form.password.data)
+        confirm = User.hashpass(form.confirm.data)
+        flash('Passwords do not match %s' % passcheck)
+        flash('Passwords do not match %s' % confirm)
+        # if passcheck == confirm:
+        if user is None and email is None:
+            flash('No Prior Registration, and passchecked')
+            new_user = User(
+                name=form.username.data,
+                email=form.email.data,
+                password=User.hashpass(form.password.data)
+            )
+            db.session.add(new_user)
+            db.session.commit()
+            flash('Successfully registered User:%s' %
+                  form.username)
+            return redirect(url_for('login'))
+    return render_template('register.html',
+                           title='Register',
                            form=form)
 
 
